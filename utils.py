@@ -3,22 +3,29 @@
 # Author: Sébastien Combéfis
 # Version: February 8, 2018
 
+import math
+
 def fact(n):
-    """Computes the factorial of a natural number.
-    
-    Pre: -
-    Post: Returns the factorial of 'n'.
-    Throws: ValueError if n < 0
-    """
+    """Computes the factorial of a natural number."""
+    if n == 0:
+        return 1
+    else:
+        return n * fact(n-1)
 
 def roots(a, b, c):
-    """Computes the roots of the ax^2 + bx + x = 0 polynomial.
+    """Computes the roots of the ax^2 + bx + x = 0 polynomial."""
     
-    Pre: -
-    Post: Returns a tuple with zero, one or two elements corresponding
-          to the roots of the ax^2 + bx + c polynomial.
-    """
-    pass
+    d = b**2-4*a*c # discriminant
+
+    if d == 0:
+        x = (-b+math.sqrt(b**2-4*a*c))/2*a
+        return x
+    elif d <0:
+        return None
+    else:
+        x1 = (-b+math.sqrt(b**2-4*a*c))/2*a
+        x2 = (-b-math.sqrt(b**2-4*a*c))/2*a
+        return (x1,x2)
 
 def integrate(function, lower, upper):
     """Approximates the integral of a fonction between two bounds
